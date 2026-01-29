@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Level 2</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Quicksand', sans-serif;
+    }
+
+    html, body {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      background-image: url("level_bg/WhatsApp Image 2026-01-19 at 3.48.32 PM (2).jpeg");
+      background-size: cover;
+      background-position: center;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(255,255,255,0.55);
+      z-index: -1;
+    }
+
+    h1 {
+      text-align: center;
+      padding: 20px;
+      font-size: 2.2rem;
+      opacity: 0;
+      animation: fadeDown 0.8s ease forwards;
+    }
+
+    .level-container {
+      height: calc(100% - 90px);
+      display: flex;
+      gap: 30px;
+      padding: 30px;
+    }
+
+    /* LEFT PANEL */
+    #left {
+      width: 40%;
+      background: rgba(255,255,255,0.9);
+      border-radius: 24px;
+      padding: 30px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+      overflow-y: auto;
+
+      opacity: 0;
+      transform: translateX(-30px);
+      animation: slideInLeft 0.9s ease forwards 0.3s;
+    }
+
+    #left h2 {
+      margin: 20px 0 10px;
+      font-size: 1.25rem;
+    }
+
+    .question {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .question.show {
+      animation: fadeUp 0.6s ease forwards;
+    }
+
+    .option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 8px 0;
+      font-size: 1.05rem;
+      cursor: pointer;
+      color: #432616;
+      font-weight: 600;
+    }
+
+    input[type="radio"] {
+      accent-color: #6366f1;
+      transform: scale(1.2);
+    }
+
+    .buttons {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    button {
+      flex: 1;
+      padding: 12px;
+      border-radius: 14px;
+      border: none;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    #check {
+      background: #432616;
+      color: white;
+    }
+
+    #back {
+      background: #e5e7eb;
+    }
+
+    button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    button:active {
+      transform: scale(0.96);
+    }
+
+    /* RIGHT PANEL */
+    #right {
+      width: 60%;
+      background: rgba(255,255,255,0.85);
+      border-radius: 24px;
+      padding: 30px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-size: 1.3rem;
+      color: #432616;
+      font-weight: 600;
+
+      opacity: 0;
+      transform: translateX(30px);
+      animation: slideInRight 0.9s ease forwards 0.5s;
+    }
+
+    .result-pop {
+      animation: pop 0.6s ease;
+    }
+
+    /* Shake on error */
+    .shake {
+      animation: shake 0.4s ease;
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideInLeft {
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes slideInRight {
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes pop {
+      from { transform: scale(0.85); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes shake {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(-4px); }
+      50% { transform: translateX(4px); }
+      75% { transform: translateX(-4px); }
+      100% { transform: translateX(0); }
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>✨ Level 2 ✨</h1>
+
+<div class="level-container">
+
+  <div id="left">
+    <h2>📝 Quiz Time</h2>
+
+    <div class="question">
+      <h2>1. Where was our very first photo together taken?</h2>
+      <label class="option"><input type="radio" name="q1" value="A"> BYD</label>
+      <label class="option"><input type="radio" name="q1" value="B"> PP City Centre</label>
+      <label class="option"><input type="radio" name="q1" value="C"> Hashery</label>
+      <label class="option"><input type="radio" name="q1" value="D"> Movie Hall</label>
+    </div>
+
+    <div class="question">
+      <h2>2. If we were a fictional couple, who would we be?</h2>
+      <label class="option"><input type="radio" name="q2" value="A"> Jim & Pam</label>
+      <label class="option"><input type="radio" name="q2" value="B"> Monica & Chandler</label>
+      <label class="option"><input type="radio" name="q2" value="C"> Jake & Amy</label>
+      <label class="option"><input type="radio" name="q2" value="D"> Amy & Sheldon</label>
+    </div>
+
+    <div class="question">
+      <h2>3. What was I wearing on our first date?</h2>
+      <label class="option"><input type="radio" name="q3" value="A"> Blue sweater</label>
+      <label class="option"><input type="radio" name="q3" value="B"> Goofy sweater</label>
+      <label class="option"><input type="radio" name="q3" value="C"> Black coat</label>
+      <label class="option"><input type="radio" name="q3" value="D"> Black sweater</label>
+    </div>
+
+    <div class="buttons">
+      <button id="check">Check</button>
+      <button id="back">Back</button>
+    </div>
+  </div>
+
+  <div id="right">
+    ✨ Your results will appear here ✨
+  </div>
+
+</div>
+
+<script>
+  document.getElementById('back').onclick = () => location.href = "game.html";
+
+  // Stagger questions
+  document.querySelectorAll('.question').forEach((q, i) => {
+    setTimeout(() => q.classList.add('show'), i * 200);
+  });
+
+  document.getElementById('check').onclick = () => {
+    const right = document.getElementById('right');
+    right.classList.remove('result-pop');
+    right.innerHTML = "";
+
+    let errors = [];
+
+    const q1 = document.querySelector('input[name="q1"]:checked')?.value;
+    const q2 = document.querySelector('input[name="q2"]:checked')?.value;
+    const q3 = document.querySelector('input[name="q3"]:checked')?.value;
+
+    if (q1 !== "B") errors.push("❌ Question 1 is incorrect");
+    if (q2 !== "A") errors.push("❌ Question 2 is incorrect");
+    if (q3 !== "D") errors.push("❌ Question 3 is incorrect");
+
+    if (errors.length === 0) {
+      right.innerHTML = `
+        <div class="result-pop">
+          <h2>🎉 All Answers Correct!</h2>
+          <a href="https://www.jibjab.com/view/make/we-belong-together-sg/1052b907-173c-45ee-9bf4-bd429fb70b5f"
+             target="_blank"
+             style="
+               display:inline-block;
+               margin-top:20px;
+               padding:14px 26px;
+               background:linear-gradient(135deg,#ec4899,#8b5cf6);
+               color:white;
+               font-weight:700;
+               border-radius:16px;
+               text-decoration:none;
+             ">
+            💖 Unlock Surprise 💖
+          </a>
+        </div>`;
+    } else {
+      right.classList.add('shake');
+      right.innerHTML = errors.map(e => `<p>${e}</p>`).join("");
+    }
+  };
+</script>
+
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Main Game</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Quicksand', sans-serif;
+    }
+
+    html, body {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnbRaYySgh-s51dcWqAqfdjZ58_LXe7TnBtg&s");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      display: flex;
+      flex-direction: column;
+      color: #1f2933;
+    }
+
+    /* soft white overlay */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.5);
+      z-index: -1;
+    }
+
+    h1 {
+      text-align: center;
+      padding: 20px;
+      font-size: 2.2rem;
+      font-weight: 700;
+    }
+
+    /* LEVEL STRIP */
+    #levels {
+      flex: 1;
+      display: flex;
+      gap: 24px;
+      padding: 24px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* LEVEL CARD */
+    .level {
+      position: relative;
+      border: none;
+      border-radius: 28px;
+      cursor: pointer;
+      flex: 1;
+      max-width: 280px;
+
+      aspect-ratio: 3 / 5;
+
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      box-shadow: 0 16px 35px rgba(0, 0, 0, 0.18);
+      overflow: hidden;
+
+      /* START HIDDEN */
+      opacity: 0;
+      transform: translateY(20px);
+
+      /* ANIMATION */
+      transition:
+        opacity 0.9s ease,
+        transform 0.9s ease,
+        box-shadow 0.3s ease;
+    }
+
+    /* SHOWN AFTER LOAD */
+    .level.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .level:hover {
+      transform: translateY(-12px) scale(1.04);
+      box-shadow: 0 28px 60px rgba(0, 0, 0, 0.25);
+    }
+
+    .level:active {
+      transform: scale(0.97);
+    }
+
+    /* White overlay for text readability */
+    .level::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(255, 255, 255, 0.75),
+        rgba(255, 255, 255, 0.1)
+      );
+    }
+
+    .level span {
+      position: absolute;
+      bottom: 20px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-size: 1.6rem;
+      font-weight: 700;
+      z-index: 1;
+    }
+
+    /* BACKGROUNDS */
+    #level1 {
+      background-image: url("level_bg/WhatsApp Image 2026-01-19 at 3.48.32 PM (1).jpeg");
+    }
+
+    #level2 {
+      background-image: url("level_bg/WhatsApp Image 2026-01-19 at 3.48.32 PM (2).jpeg");
+    }
+
+    #level3 {
+      background-image: url("level_bg/WhatsApp Image 2026-01-19 at 3.48.32 PM.jpeg");
+    }
+
+    #level4 {
+      background-image: url("level_bg/WhatsApp Image 2026-01-19 at 3.49.28 PM.jpeg");
+    }
+
+    @media (max-width: 900px) {
+      .level {
+        max-width: 220px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      #levels {
+        gap: 14px;
+      }
+
+      .level span {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="levels">
+    <button class="level" id="level1"><span>Level 1</span></button>
+    <button class="level" id="level2"><span>Level 2</span></button>
+    <button class="level" id="level3"><span>Level 3</span></button>
+    <button class="level" id="level4"><span>Level 4</span></button>
+  </div>
+
+  <script>
+    // Navigate
+    level1.onclick = () => location.href = "level1.html";
+    level2.onclick = () => location.href = "level2.html";
+    level3.onclick = () => location.href = "level3.html";
+    level4.onclick = () => location.href = "level4.html";
+
+    // Fade-in AFTER load (reliable)
+    window.addEventListener("load", () => {
+      const cards = document.querySelectorAll(".level");
+
+      cards.forEach((card, index) => {
+        setTimeout(() => {
+          card.classList.add("show");
+        }, index * 250); // stagger
+      });
+    });
+  </script>
+
+</body>
+</html>
